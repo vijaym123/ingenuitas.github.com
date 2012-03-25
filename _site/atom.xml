@@ -4,13 +4,21 @@
  <title></title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2012-03-24T23:30:17-04:00</updated>
+ <updated>2012-03-25T17:10:15-04:00</updated>
  <id></id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Irc Log Posted</title>
+   <link href="/irc/2012/03/25/irc-log-posted.html"/>
+   <updated>2012-03-25T00:00:00-04:00</updated>
+   <id>/irc/2012/03/25/irc-log-posted</id>
+   <content type="html">&lt;p&gt;A new IRC log has is available at:&lt;a href='./logs/2012-3-28-#simplecv.log'&gt;irc log&lt;/a&gt;&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>New Soc Blog</title>
