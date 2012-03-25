@@ -1,0 +1,9 @@
+
+/archive.html
+/index.html
+/sitemap.txt
+/pages.html
+/atom.xml
+/apply.html
+
+/lessons/2012/03/24/new-soc-blog.html
