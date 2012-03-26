@@ -1,0 +1,764 @@
+2012-03-23T14:53:11  *** dev1 has joined #simplecv
+2012-03-23T14:56:28  <xamox> np
+2012-03-23T14:57:18  <xamox> Hrm
+2012-03-23T15:02:56  *** elfwisden has joined #simplecv
+2012-03-23T15:03:13  *** dev1 has left #simplecv
+2012-03-23T15:07:36  <xamox> Shell, Okay, so the channellog module should be enabled.  It created a file, but doesn't appear to be logging, is there something else I need to do?
+2012-03-23T15:10:28  *** LeLouch16 has joined #simplecv
+2012-03-23T15:12:15  <blink> LeLouch16: it seems to work fine for me in ubuntu... try reinsatlling again.... i hope u followed these instructions... http://examples.simplecv.org/en/latest/index.html#
+2012-03-23T15:12:31  <blink> sorry for the late reply..
+2012-03-23T15:14:36  *** LeLouch16 has quit IRC
+2012-03-23T15:19:10  *** rishipyth has joined #simplecv
+2012-03-23T15:19:26  <xamox> okay, the bot is now logging
+2012-03-23T15:19:37  <xamox> victsou_, I will now take a look at your code
+2012-03-23T15:19:46  *** LeLouch16 has joined #simplecv
+2012-03-23T15:20:13  <victsou_> kk xamox
+2012-03-23T15:20:58  <LeLouch16> Yes, I tried to trace the error and it seems to occur when cv.Resize function is called
+2012-03-23T15:20:58  *** rishipyth has quit IRC
+2012-03-23T15:22:33  <xamox> victsou_, Do you have much experience with git?
+2012-03-23T15:23:08  <victsou_> I guess you just found out I don't , hehe
+2012-03-23T15:23:18  <victsou_> I have a friend with very, very much experience
+2012-03-23T15:23:21  <victsou_> he's been helping me
+2012-03-23T15:23:22  <xamox> victsou_, not a big deal.  I like the direction you are heading.
+2012-03-23T15:23:30  <xamox> victsou_, yeah, creating a new branch is always a good idea
+2012-03-23T15:23:49  <xamox> victsou_, we typically have a convention where we name our branch our new feature we are adding
+2012-03-23T15:23:58  <victsou_> I followed katherine's suggestion and started off a branch that was supposed to be merged soon
+2012-03-23T15:24:00  <victsou_> grab_cutt
+2012-03-23T15:24:02  <victsou_> grab_cut
+2012-03-23T15:24:08  <victsou_> oh, yeah xamox
+2012-03-23T15:24:19  <xamox> victsou_, that way code doesn't get mixed up, for instance I notice you have uploads fixed and the logging in the same branch
+2012-03-23T15:24:19  <victsou_> that makes sense
+2012-03-23T15:24:49  <xamox> victsou_, So what you would probably want do is make a new branch, add the upload code
+2012-03-23T15:24:56  <xamox> Then you can submit a pull request to us
+2012-03-23T15:25:08  <xamox> That's basically how I will know your code is ready to be looked at
+2012-03-23T15:25:25  <xamox> In the mean time you can always create a new branch (normally always from master)
+2012-03-23T15:25:37  <victsou_> So I should clone master and add the upload code, right?
+2012-03-23T15:25:42  <xamox> Well
+2012-03-23T15:25:43  <xamox> It's okay now
+2012-03-23T15:25:48  <xamox> But in the future
+2012-03-23T15:25:54  <victsou_> oh, I get it
+2012-03-23T15:25:56  <victsou_> sure thing
+2012-03-23T15:25:59  <xamox> So those branches can be validated
+2012-03-23T15:26:04  <xamox> For instance your upload code may work
+2012-03-23T15:26:10  <xamox> But your logging code might not
+2012-03-23T15:26:23  <xamox> I know I can merge from that single commit
+2012-03-23T15:26:42  <xamox> But for upstream things, like latter, if you need to merge back into the logging branch it will cause issues
+2012-03-23T15:28:09  <victsou_> xamox, you're look at old code
+2012-03-23T15:28:14  <victsou_> I removed the public api key there
+2012-03-23T15:28:20  <victsou_> So key=none would'nt work
+2012-03-23T15:28:22  <xamox> haha
+2012-03-23T15:28:23  <xamox> Okay
+2012-03-23T15:28:24  <xamox> Sorry
+2012-03-23T15:28:32  <xamox> Whoops
+2012-03-23T15:28:36  <xamox> But that is a good example
+2012-03-23T15:28:50  <xamox> Kind of when you add a feature, then I can validate just that function
+2012-03-23T15:28:58  <xamox> victsou_, ;)
+2012-03-23T15:29:08  <victsou_> yeah, got it =D
+2012-03-23T15:29:10  <xamox> so like if that was in the upload branch
+2012-03-23T15:29:16  <xamox> Then you issue a pull request
+2012-03-23T15:29:28  <xamox> I know you just want me to check that stuff you changed and maybe not worry about logging
+2012-03-23T15:29:45  <victsou_> Nono, I wanted to go into logging too
+2012-03-23T15:29:54  <xamox> It also speeds up development process, so I can get your upload code into master, while you work on logging
+2012-03-23T15:30:02  <xamox> victsou_, yeah, I'm looking at that too
+2012-03-23T15:30:02  <victsou_> oh
+2012-03-23T15:30:07  <victsou_> oh yeah
+2012-03-23T15:30:12  <victsou_> thank you xamox
+2012-03-23T15:30:13  <xamox> victsou_, I hope I'm not confusing you
+2012-03-23T15:30:17  <victsou_> no you're not
+2012-03-23T15:30:22  <xamox> victsou_, You are doing the correct thing
+2012-03-23T15:30:26  <victsou_> question:
+2012-03-23T15:30:38  <victsou_> https://github.com/victsou/SimpleCV/commit/e28b43f2837a9ff50301d77ed6e3642e783ba829
+2012-03-23T15:30:42  <victsou_> (last commit about the upload thing)
+2012-03-23T15:30:47  <victsou_> Does that need any changes?
+2012-03-23T15:30:51  <victsou_> You commented on the older one
+2012-03-23T15:34:36  <xamox> victsou_, no, looking at the updated code
+2012-03-23T15:35:02  <victsou_> alrighty!
+2012-03-23T15:37:37  <xamox> victsou_, is pycurl part of the standard python lib?
+2012-03-23T15:38:04  <victsou_> nope, xamox
+2012-03-23T15:38:24  <victsou_> thought it was somewhere on the project already, though
+2012-03-23T15:38:38  <victsou_> idk
+2012-03-23T15:38:41  <victsou_> but no, it isn't
+2012-03-23T15:39:39  <xamox> victsou_, okay, n/m I saw that you removed it later
+2012-03-23T15:39:48  <xamox> victsou_, looks like you are going down the correct path for logging I would say
+2012-03-23T15:39:53  <victsou_> xamox:
+2012-03-23T15:40:10  <victsou_> init_logging is not supposed to be called by the user
+2012-03-23T15:40:22  <victsou_> is called when the shell is inititating
+2012-03-23T15:40:45  <victsou_> should I write autodoc for it too?
+2012-03-23T15:40:50  <xamox> no, that was for
+2012-03-23T15:40:54  <xamox> get_log_level
+2012-03-23T15:41:19  <victsou_> oh, same thing
+2012-03-23T15:41:29  <victsou_> that doesn't retrieve the current log_level
+2012-03-23T15:41:48  <victsou_> just deals with the variable given to set_logging
+2012-03-23T15:41:57  <victsou_> so that set_logging wouldn't be too big
+2012-03-23T15:41:58  *** Annaa has quit IRC
+2012-03-23T15:43:16  <xamox> victsou_, so could we just use logger.setlevel?
+2012-03-23T15:43:28  <victsou_> that is possible, yeah
+2012-03-23T15:44:01  <xamox> victsou_, Yeah, Nate, our lead developer has always taught me, write the minimum amount of code you can, because in the future it will be less code you have to maintain
+2012-03-23T15:44:32  <victsou_> hm... is that about set_logging?
+2012-03-23T15:44:38  <xamox> victsou_, Other than that, looking really good.  Just feel free to issue a pull request when you see fit. I probably won't get around to it until this weekend though
+2012-03-23T15:44:47  <victsou_> okidokie
+2012-03-23T15:44:54  <xamox> time for lunch for me
+2012-03-23T15:44:58  <victsou_> me too!
+2012-03-23T15:45:02  <xamox> be back in a bit
+2012-03-23T15:45:02  <victsou_> cya
+2012-03-23T15:45:05  <victsou_> thx!!
+2012-03-23T15:45:08  <xamox> np
+2012-03-23T16:19:32  *** IRrupTor has joined #simplecv
+2012-03-23T16:27:38  *** kain88 has joined #simplecv
+2012-03-23T16:35:07  *** witness123 has quit IRC
+2012-03-23T16:38:21  *** IRrupTor has quit IRC
+2012-03-23T16:39:36  *** elfwisden has quit IRC
+2012-03-23T16:40:51  *** LeLouch16 has quit IRC
+2012-03-23T16:47:54  *** IRrupTpr has joined #simplecv
+2012-03-23T16:48:11  <IRrupTpr> hello
+2012-03-23T16:48:11  <jayrambhia> is there some function in simplecv to take horizontal projection of an image ?
+2012-03-23T16:49:04  <IRrupTpr> help SimpleCV command is showing error
+2012-03-23T16:49:43  <IRrupTpr> it's a NameError
+2012-03-23T16:49:58  *** krats1123 has joined #simplecv
+2012-03-23T16:50:01  <IRrupTpr> name SimpleCV is not defined
+2012-03-23T16:50:15  <IRrupTpr> would anyone help me plz
+2012-03-23T16:50:17  <IRrupTpr> ?
+2012-03-23T16:51:33  <IRrupTpr> simplecv/SimpleCV/ImageClass.py in __init__(self, source, camera, colorSpace)     149         elif (type(source) == type(str()) and source != ''):     150             self.filename = source --> 151             self._bitmap = cv.LoadImage(self.filename, iscolor=cv.CV_LOAD_IMAGE_COLOR)     152             self._colorSpace = ColorSpace.BGR     153   IOError: [Errno 2] No such file or directory: 'simplecv'
+2012-03-23T16:52:01  <IRrupTpr> i got this error when i ran logo=Image("simplecv")
+2012-03-23T16:52:22  <IRrupTpr> any body help me
+2012-03-23T16:52:52  <jayrambhia> try
+2012-03-23T16:52:57  <jayrambhia> Image("lenna")
+2012-03-23T16:53:13  <IRrupTpr> same error
+2012-03-23T16:53:35  <IRrupTpr> which directory is default directory
+2012-03-23T16:53:37  <jayrambhia> try some other images which are in your computer. give complete path
+2012-03-23T16:53:41  <IRrupTpr> in SimpleCV
+2012-03-23T16:56:34  <xamox> did you
+2012-03-23T16:56:38  <xamox> import SimpleCV
+2012-03-23T16:56:44  <xamox> or are you in the simplecv shell?
+2012-03-23T16:56:49  <IRrupTpr> yes
+2012-03-23T16:57:21  <IRrupTpr> no I am iin SimpleCV
+2012-03-23T16:57:41  <IRrupTpr> Thank you
+2012-03-23T16:57:43  <IRrupTpr> got
+2012-03-23T16:57:56  <xamox> does something like this work:
+2012-03-23T16:58:02  <IRrupTpr> I used from SimpleCV import *
+2012-03-23T16:58:20  <IRrupTpr> and this was not working
+2012-03-23T16:58:23  <xamox> img = Image('http://simplecv.s3.amazonaws.com/simplecv_lg.png')
+2012-03-23T16:58:37  <IRrupTpr> now it's fine
+2012-03-23T16:58:43  <IRrupTpr> i got
+2012-03-23T16:58:47  <IRrupTpr> it'working
+2012-03-23T16:58:51  <xamox> Right
+2012-03-23T16:58:57  <xamox> there are two ways
+2012-03-23T16:59:01  <xamox> import SimpleCV
+2012-03-23T16:59:06  <xamox> img = SimpleCV.Image('lenna')
+2012-03-23T16:59:17  <xamox> which keeps the namespaces seperate
+2012-03-23T16:59:19  <xamox> or
+2012-03-23T16:59:23  <xamox> from SimpleCV import *
+2012-03-23T16:59:31  <xamox> img = Image('lenna')
+2012-03-23T16:59:53  <IRrupTpr> k
+2012-03-23T17:00:15  <IRrupTpr> but i can't load image
+2012-03-23T17:00:30  <IRrupTpr> img =Image('lenna')
+2012-03-23T17:01:14  <IRrupTpr> ImageClass.py in __init__(self, source, camera, colorSpace)     149         elif (type(source) == type(str()) and source != ''):     150             self.filename = source --> 151             self._bitmap = cv.LoadImage(self.filename, iscolor=cv.CV_LOAD_IMAGE_COLOR)     152             self._colorSpace = ColorSpace.BGR     153   IOError: [Errno 2] No such file or directory: 'lenna'
+2012-03-23T17:01:53  <IRrupTpr> point what the prob
+2012-03-23T17:02:08  <IRrupTpr> i did as said
+2012-03-23T17:07:33  <IRrupTpr> 1
+2012-03-23T17:07:33  *** arduix has quit IRC
+2012-03-23T17:09:57  <IRrupTpr> where is this source is value in input
+2012-03-23T17:10:04  <IRrupTpr> where is this source'svalue in input
+2012-03-23T17:15:06  <IRrupTpr> [Errno 2] No such file or directory: 'lenna'
+2012-03-23T17:17:12  *** dhanush has joined #simplecv
+2012-03-23T17:17:21  <dhanush> hi all
+2012-03-23T17:17:35  <dhanush> im looking for some hellp
+2012-03-23T17:19:11  <jayrambhia> dhanush, regarding what ?
+2012-03-23T17:19:46  <dhanush> gsoc
+2012-03-23T17:20:29  <dhanush> im a beginner to python with prior coding experience in c,c++
+2012-03-23T17:20:47  <dhanush> i aim to get into gsoc in 2013
+2012-03-23T17:20:59  <dhanush> with python as my programming language
+2012-03-23T17:21:43  <dhanush> i need some advice
+2012-03-23T17:21:45  <jayrambhia> why 2013 ?
+2012-03-23T17:21:48  <IRrupTpr> i used help SimpleCV and the package contnet didn't have Images class
+2012-03-23T17:22:07  <IRrupTpr> tell me what the prob
+2012-03-23T17:22:14  <dhanush> ill try in 2012
+2012-03-23T17:22:20  <dhanush> also
+2012-03-23T17:22:36  <dhanush> but i need advice
+2012-03-23T17:22:38  <dhanush> what i need?
+2012-03-23T17:22:45  <ezod> xamox: i have logs (irssi format) back to sunday evening if you need them
+2012-03-23T17:22:46  <jayrambhia> IRrupTpr, Are you sure that you have properly installed SimpleCV ?
+2012-03-23T17:23:06  <IRrupTpr> yes
+2012-03-23T17:23:17  <IRrupTpr> it took 5 days to me
+2012-03-23T17:23:21  <IRrupTpr> to install
+2012-03-23T17:23:25  <jayrambhia> what ? how come ?
+2012-03-23T17:23:28  <IRrupTpr> properly
+2012-03-23T17:23:42  <IRrupTpr> ffmpeg and libav
+2012-03-23T17:23:55  <jayrambhia> Try re-installing it again. Download package from github.
+2012-03-23T17:23:55  <IRrupTpr> were not adapted
+2012-03-23T17:24:08  <IRrupTpr> i did at least ten time
+2012-03-23T17:24:13  <jayrambhia> ohh
+2012-03-23T17:24:18  <IRrupTpr> help Image is working
+2012-03-23T17:24:21  <IRrupTpr> fine
+2012-03-23T17:24:28  <jayrambhia> then ?
+2012-03-23T17:24:45  <IRrupTpr> but image= Image("lenna")
+2012-03-23T17:24:51  <IRrupTpr> is not working
+2012-03-23T17:25:06  <jayrambhia> did you try with some other image from your computer?
+2012-03-23T17:25:15  <IRrupTpr> [Errno 2] No such file or directory: 'lenna'
+2012-03-23T17:25:15  <jayrambhia> and how did you install the simplecv package ?
+2012-03-23T17:25:27  <IRrupTpr> i put with it's directory
+2012-03-23T17:25:39  <IRrupTpr> i used url link
+2012-03-23T17:25:46  <jayrambhia> not working ?
+2012-03-23T17:25:50  <IRrupTpr> then also same prob
+2012-03-23T17:26:29  <jayrambhia> what are you using ? ubuntu ?
+2012-03-23T17:26:43  <IRrupTpr> is your working fine
+2012-03-23T17:26:49  <IRrupTpr> ?
+2012-03-23T17:26:52  <IRrupTpr> 11.10
+2012-03-23T17:27:06  *** dhanush has quit IRC
+2012-03-23T17:27:07  <victsou_> is it lenna.jpg?
+2012-03-23T17:27:13  <victsou_> or lenna
+2012-03-23T17:27:15  <victsou_> ? =p
+2012-03-23T17:27:28  <IRrupTpr> plzz give only lenna
+2012-03-23T17:27:47  <jayrambhia> lenna
+2012-03-23T17:28:06  <IRrupTpr> plzz opencv.sh file
+2012-03-23T17:28:20  <jayrambhia> IRrupTpr, yeah, ubuntu 11.10 and simplecv working fine
+2012-03-23T17:28:31  <jayrambhia> IRrupTpr, what ?
+2012-03-23T17:28:40  <IRrupTpr> if you have made any changes prior to installation
+2012-03-23T17:28:50  *** blink has quit IRC
+2012-03-23T17:29:08  <IRrupTpr> opencv.shell file
+2012-03-23T17:29:22  <IRrupTpr> which contain script for installation
+2012-03-23T17:29:35  <IRrupTpr> plzz check the ffmpeg version of yours
+2012-03-23T17:29:50  <IRrupTpr> jayrambhia
+2012-03-23T17:29:50  <jayrambhia> I updated it to the latest version
+2012-03-23T17:30:41  <jayrambhia> IRrupTpr, ozbots.org/opencv-install-troubleshooting/
+2012-03-23T17:31:05  <jayrambhia> IRrupTpr, http://www.ozbotz.org/opencv-install-troubleshooting/
+2012-03-23T17:31:30  *** dhanush has joined #simplecv
+2012-03-23T17:31:42  <dhanush> hi
+2012-03-23T17:31:45  <jayrambhia> IRrupTpr, http://thebitbangtheory.wordpress.com/2011/10/23/how-to-install-opencv-2-3-1-in-ubuntu-11-10-oneiric-ocelot-with-python-support/ same thing, but you can try
+2012-03-23T17:31:46  <dhanush> had a connection problem
+2012-03-23T17:32:04  <jayrambhia> dhanush, so what do you need help with ?
+2012-03-23T17:32:07  <IRrupTpr> could you point out from error  what the problem
+2012-03-23T17:32:14  <IRrupTpr> [Errno 2] No such file or directory: 'lenna'
+2012-03-23T17:32:30  *** Gaboose has joined #simplecv
+2012-03-23T17:32:35  <dhanush> i want to know what do i need to do to get into a project?
+2012-03-23T17:32:43  <jayrambhia> IRrupTpr, I guess, the default path hasn't properly set
+2012-03-23T17:33:11  <dhanush> like if im submitting a proposal this time. what is expected of me?
+2012-03-23T17:33:24  <IRrupTpr> have you gone through the code
+2012-03-23T17:33:30  <jayrambhia> dhanush, I am not a mentor. and I am trying same thing. As told by mentors, you need to learn how simplecv works, and make some good examples using it
+2012-03-23T17:33:43  <jayrambhia> IRrupTpr, which code ? ImageClass ?
+2012-03-23T17:33:49  <dhanush> ok.
+2012-03-23T17:33:57  <dhanush> so what else?
+2012-03-23T17:33:57  <IRrupTpr> whole Skeleton of it
+2012-03-23T17:34:23  <jayrambhia> IRrupTpr, yeah. but not how it builds its library.
+2012-03-23T17:34:56  <IRrupTpr> well check imageclass line 149 to 154
+2012-03-23T17:34:58  <jayrambhia> dhanush, make something that can be used in simplecv and submit a patch or something like that
+2012-03-23T17:35:03  <jayrambhia> IRrupTpr, okay
+2012-03-23T17:35:03  <jayrambhia> wait
+2012-03-23T17:35:25  <dhanush> can you give me an example?
+2012-03-23T17:35:47  <jayrambhia> dhanush, as in ? what example ?
+2012-03-23T17:35:50  <IRrupTpr> there is source as an object
+2012-03-23T17:36:01  <jayrambhia>       >>> imgs.load("images/eyes", "png")
+2012-03-23T17:36:01  <jayrambhia>       """
+2012-03-23T17:36:01  <jayrambhia>       if not directory:
+2012-03-23T17:36:02  <jayrambhia>         print "You need to give a directory to load from"
+2012-03-23T17:36:02  <jayrambhia>         return
+2012-03-23T17:36:40  <jayrambhia> I have updated my ImageClass file with fourier branch
+2012-03-23T17:36:43  <dhanush> like what kind of patch or demo example?
+2012-03-23T17:36:47  <IRrupTpr> in __init__(self, source, camera, colorSpace)     149         elif (type(source) == type(str()) and source != ''):     150             self.filename = source --> 151             self._bitmap = cv.LoadImage(self.filename, iscolor=cv.CV_LOAD_IMAGE_COLOR)     152             self._colorSpace = ColorSpace.BGR
+2012-03-23T17:37:07  <IRrupTpr> this is the code which causing the prob
+2012-03-23T17:37:07  <xamox> IRrupTpr, Ahh, I think i know.  Try img = Image('simplecv')
+2012-03-23T17:37:15  <xamox> I think lenna has been added recently and isn't in 1.2
+2012-03-23T17:37:49  <xamox> ezod, thanks, I'll let you know.
+2012-03-23T17:38:23  <jayrambhia> xamox, IRrupTpr what difference will that make ?
+2012-03-23T17:39:14  <xamox> jayrambhia, will not having the latest?
+2012-03-23T17:39:28  <jayrambhia> ?
+2012-03-23T17:39:44  <xamox> jayrambhia, not sure I understand your question
+2012-03-23T17:40:15  <jayrambhia> xamox, you asked IRrupTpr to use img = Image('simplecv'). what difference will it make ? it's the same thing
+2012-03-23T17:41:00  <IRrupTpr> xamox tell where is source defined
+2012-03-23T17:41:28  <IRrupTpr> no it may be thta i didn't have this oimage
+2012-03-23T17:41:46  <IRrupTpr> but simplecv is for sure
+2012-03-23T17:41:59  <IRrupTpr> may be due version diff
+2012-03-23T17:42:09  <jayrambhia> IRrupTpr, that's what I have been telling you to do. Try to load an image which is in your computer
+2012-03-23T17:42:28  <IRrupTpr> well i am trying dear
+2012-03-23T17:42:44  <IRrupTpr> xamox tell me
+2012-03-23T17:43:30  <IRrupTpr> where is this source object is defined in class ImageClass
+2012-03-23T17:43:48  <IRrupTpr> or from which class it is imported
+2012-03-23T17:44:28  <jayrambhia> IRrupTpr, dude. source is what you pass as a parameter
+2012-03-23T17:45:38  <IRrupTpr> well i am talking about where is this default directory is defined
+2012-03-23T17:45:50  <IRrupTpr> would u tell me
+2012-03-23T17:47:14  <jayrambhia> /usr/local/lib/python2.7/dist-packages/SimpleCV-1.2.0-py2.7
+2012-03-23T17:47:20  <jayrambhia> check this directory
+2012-03-23T17:47:36  <xamox> IRrupTpr,
+2012-03-23T17:47:39  <jayrambhia> or something similar directory in /usr/local/lib/python2.7/dist-packages/
+2012-03-23T17:47:39  <xamox> import SimpleCV
+2012-03-23T17:47:43  <xamox> SimpleCV.__file__
+2012-03-23T17:47:55  <xamox> That will tell you where simplecv is installed
+2012-03-23T17:48:04  <xamox> It's in a subfolder called images
+2012-03-23T17:48:07  <xamox> sorry
+2012-03-23T17:48:10  <xamox> 'sampleimages'
+2012-03-23T17:48:55  <xamox> They can also be found and downloaded directly from the repo: https://github.com/ingenuitas/SimpleCV/tree/master/SimpleCV/sampleimages
+2012-03-23T17:49:16  <xamox> It isn't loading them from a file
+2012-03-23T17:49:21  <xamox> doing this
+2012-03-23T17:49:24  <xamox> img = Image('simplecv')
+2012-03-23T17:49:42  <xamox> actually loads a string and converts it to an iamge
+2012-03-23T17:49:46  <xamox> that way we can store images in code
+2012-03-23T17:49:48  <xamox> :)
+2012-03-23T17:50:01  <xamox> And they can live agonistic of any operating system you are onn
+2012-03-23T17:51:34  *** victsou_ has quit IRC
+2012-03-23T17:52:07  *** victsou_ has joined #simplecv
+2012-03-23T17:58:17  *** flak37 has joined #simplecv
+2012-03-23T18:03:06  <Gaboose> ive got some runtime errors when I was using the one click installer for windows
+2012-03-23T18:03:14  <Gaboose> but the instalation finished
+2012-03-23T18:03:16  <Gaboose> is that to be expected?
+2012-03-23T18:05:57  <Gaboose> I wonder if they're linked to the errors, when I write img = cam.getImage()
+2012-03-23T18:09:43  *** Annaa has joined #simplecv
+2012-03-23T18:10:03  <Gaboose> hello?
+2012-03-23T18:10:37  <jayrambhia> Gaboose, is it working ?
+2012-03-23T18:10:47  *** Annaa is now known as Anwaya
+2012-03-23T18:11:08  <Gaboose> no, getImage() throws an exception and doesnt return anything
+2012-03-23T18:11:38  <jayrambhia> Gaboose, did you define cam=Camera() ?
+2012-03-23T18:11:44  <Gaboose> yes
+2012-03-23T18:11:54  <Gaboose> got a popup dialog to choose a camera and everything
+2012-03-23T18:12:07  <jayrambhia> Gaboose, yeah, so choose one
+2012-03-23T18:12:14  <Gaboose> I did
+2012-03-23T18:13:24  <Gaboose> is that what happens if your webcam is not supported?
+2012-03-23T18:14:24  <xamox> Gaboose, are you sure your camera works on windows?
+2012-03-23T18:14:35  <Gaboose> yes, skype recognizes it
+2012-03-23T18:15:00  <Gaboose> and the camera name is the same one
+2012-03-23T18:15:49  *** jitrc has joined #simplecv
+2012-03-23T18:19:03  *** Shell has quit IRC
+2012-03-23T18:22:01  *** dhanush has quit IRC
+2012-03-23T18:26:00  <xamox> There is the possibility the camera isn't UVC compatiable
+2012-03-23T18:26:14  <xamox> So it might just not work
+2012-03-23T18:26:30  <xamox> Other work arounds are using a mobile device and a jpegstreamer
+2012-03-23T18:31:44  <Gaboose> don't you mean "or"?
+2012-03-23T18:35:35  *** elfwisden has joined #simplecv
+2012-03-23T18:38:08  <Gaboose> brb
+2012-03-23T18:40:54  *** frank4591 has joined #simplecv
+2012-03-23T18:42:31  *** Gaboose has quit IRC
+2012-03-23T18:47:49  *** flak37 has quit IRC
+2012-03-23T19:00:59  *** jitrc has quit IRC
+2012-03-23T19:04:05  *** arduix has joined #simplecv
+2012-03-23T19:06:02  *** frank4591 has left #simplecv
+2012-03-23T19:10:24  <g0_> xamox: hello :)   check  http://codepad.org/bMGmRN7W
+2012-03-23T19:13:46  *** IRrupTpr has quit IRC
+2012-03-23T19:14:44  *** Anwaya has quit IRC
+2012-03-23T19:17:27  *** krats1123 has quit IRC
+2012-03-23T19:21:27  <g0_> xamox: what's the proper time to come here on irc so that i can talk to you main developers?
+2012-03-23T19:28:46  <xamox> g0_, I'm kind of around most the day
+2012-03-23T19:28:55  <xamox> g0_, although I answer questions when I can
+2012-03-23T19:29:56  <xamox> g0_, you have a repo somewhere?
+2012-03-23T19:34:40  *** frank4591 has joined #simplecv
+2012-03-23T19:47:20  *** frank4591 has left #simplecv
+2012-03-23T19:57:50  *** kscottz has joined #simplecv
+2012-03-23T19:59:06  <kscottz> Alright my wonderful students...
+2012-03-23T20:00:09  *** jitrc has joined #simplecv
+2012-03-23T20:00:20  <jayrambhia> kscottz, so what type of project ideas should be submitted for beginner's project ?
+2012-03-23T20:00:38  <kscottz> Jay, you need to submit an intermediate project.
+2012-03-23T20:00:52  <jayrambhia> kscottz, as in ?
+2012-03-23T20:00:56  <kscottz> I am pretty sure you are capable of working on one
+2012-03-23T20:01:05  <kscottz> Well which one depends on what you are interested in.
+2012-03-23T20:01:14  <jayrambhia> kscottz, oh. thanks
+2012-03-23T20:01:20  *** krats1123 has joined #simplecv
+2012-03-23T20:01:34  <jayrambhia> kscottz, I started working on eye detector today, it's kind of working
+2012-03-23T20:02:08  <jayrambhia> so I was wondering if you could help me with it, like what other things can be done after detecting eyes ?
+2012-03-23T20:02:45  <kscottz> Well eye, face, mouth, etc detection are done
+2012-03-23T20:02:59  <jayrambhia> in simplecv ?
+2012-03-23T20:03:08  <kscottz> Yeah
+2012-03-23T20:03:10  <jayrambhia> oh
+2012-03-23T20:03:15  <kscottz> findHaar
+2012-03-23T20:03:19  <kscottz> err
+2012-03-23T20:03:29  <kscottz> findHaarObjects or something like that
+2012-03-23T20:03:43  <jayrambhia> yeah. actually i used it for face detection
+2012-03-23T20:03:55  *** kamal_ has joined #simplecv
+2012-03-23T20:04:40  <jayrambhia> I'll look that up
+2012-03-23T20:05:06  <kscottz> yeah
+2012-03-23T20:05:09  <kscottz> it isn't that hard
+2012-03-23T20:05:38  <kscottz> The haar cascades are on github
+2012-03-23T20:05:38  <jayrambhia> yeah. my code is kind of working. but sometimes giving false positives
+2012-03-23T20:05:55  <kscottz> false positives on face detection?
+2012-03-23T20:06:02  <jayrambhia> no. on eyes
+2012-03-23T20:06:23  <kscottz> yeah false positves are part of the game
+2012-03-23T20:06:34  *** frank4591 has joined #simplecv
+2012-03-23T20:06:37  <kscottz> One cool thing you could do for a script
+2012-03-23T20:06:45  <jayrambhia> kscottz, what ? what ?
+2012-03-23T20:06:53  <kscottz> is to get the eyes and guess the eye color
+2012-03-23T20:07:00  <kscottz> and then guess the hair and skin color too
+2012-03-23T20:07:12  <jayrambhia> kscottz, oh yeah. that would be a good idea
+2012-03-23T20:07:17  <kscottz> yeah
+2012-03-23T20:07:41  <kscottz> I bet in 100 lines you could have a start of a face recognitoin system (i.e. recognize people)
+2012-03-23T20:07:52  <kscottz> There is a technique called aggregate soft biometrics
+2012-03-23T20:08:47  <kscottz> basically the technique says, that if you can make a bunch of weak detectors, like things that can tell eye color, big nose vs. small nose, hair color... etc that if you get enough of those weak detectors they are good enough to recognize people
+2012-03-23T20:09:04  <kscottz> Versus using one of the eigen face based approaches
+2012-03-23T20:09:05  <jayrambhia> kscottz, one my seniors had done this project, in which he recognized whether eyes were drowsy or not ? and he implemented this in a car system, so whenever the eyes were found drowsy, it meant either driver is drunk or sleepy so car would stop
+2012-03-23T20:09:23  <kscottz> yeah
+2012-03-23T20:09:34  <kscottz> Gaze tracking is really popoular
+2012-03-23T20:09:40  <kscottz> actually hang on a sec
+2012-03-23T20:11:15  <jayrambhia> kscottz, so bunch of weak detectors applied at once to detect eye color, nose shape and stuff, and it might be a good, not that efficient, but good tool to identify people
+2012-03-23T20:11:17  *** flavioribeiro has joined #simplecv
+2012-03-23T20:14:24  *** khannan has joined #simplecv
+2012-03-23T20:15:38  *** sivapvarma has joined #simplecv
+2012-03-23T20:16:06  *** Gaboose has joined #simplecv
+2012-03-23T20:16:13  <kscottz> yeah... I thought I wrote an example for iris capture, but I can't find it
+2012-03-23T20:16:43  <jayrambhia> kscottz, oh. okay. I'll try to write one
+2012-03-23T20:17:33  <sivapvarma> can any one tell me what's the difference b/w opencv and simplecv
+2012-03-23T20:18:04  <jayrambhia> kscottz, okay. let's suppose i found some good project idea, and get selected, how should be that project idea spanned out in 6-7 weeks ?
+2012-03-23T20:18:28  <xamox> kscottz, your mustachinator is almost like an eye detector, I think you are using the eyes to place the mustach
+2012-03-23T20:18:33  <jayrambhia> kscottz, okay. let's suppose i found some good project idea, and get selected, how should that project idea be spanned out in 6-7 weeks ? uh..typos
+2012-03-23T20:18:40  <xamox> we really need get some new videos up
+2012-03-23T20:19:05  <xamox> sivapvarma, http://simplecv.tumblr.com/
+2012-03-23T20:19:19  <xamox> sivapvarma, Just posted that post last week
+2012-03-23T20:19:31  <kscottz> I think I use the nose
+2012-03-23T20:20:06  <kscottz> Hey Xamox, we should help this guy out http://www.reddit.com/r/computervision/comments/r7b7u/ask_cv_how_to_approach_the_problem_of_detecting/
+2012-03-23T20:20:25  <sivapvarma> xamox: why are the videos not working in the post
+2012-03-23T20:20:30  <kscottz> I was looking for an example I posted awhile ago on reddit.
+2012-03-23T20:20:40  <xamox> kscottz, you see the make blog?  The where's waldo in matlab was posted.
+2012-03-23T20:21:29  <xamox> kscottz, Yeah, something to probably chat about out of ban.d
+2012-03-23T20:24:34  <xamox> sivapvarma, an account was deleted that hosted all the files.
+2012-03-23T20:24:44  <xamox> Alright, time to go home
+2012-03-23T20:24:46  * xamox waves
+2012-03-23T20:24:48  *** xamox has quit IRC
+2012-03-23T20:25:48  <khannan> @kscottz Has Inverse perspective Mapping  been implemented? http://sourceforge.net/p/simplecv/tickets/208/ While you did mention yesterday that it was, The ticket indicates the issue as open.
+2012-03-23T20:25:48  <simplecvbot> khannan: Error: "kscottz" is not a valid command.
+2012-03-23T20:26:58  <kamal_> kscottz, do we have suggest a time line in the gsoc proposal ?
+2012-03-23T20:28:47  <kscottz> kamal I would
+2012-03-23T20:29:34  <kscottz> khannan - that ticket really doesn't constitute a valid choice for GSoC
+2012-03-23T20:30:00  <kscottz> Actually that ticket is more about just finding the right library of data structures
+2012-03-23T20:31:15  <jayrambhia> kscottz, how should our project be spanned out in 6-7 weeks ?
+2012-03-23T20:31:37  <kscottz> 6-7 weeks seems a bit short
+2012-03-23T20:31:46  <kscottz> is that what gsoc says?
+2012-03-23T20:32:09  *** flavioribeiro has left #simplecv
+2012-03-23T20:32:45  <jayrambhia> don't know. I just thought it is a span 0f 6-7 weeks
+2012-03-23T20:32:56  *** Gaboose has quit IRC
+2012-03-23T20:33:01  <khannan> You mean, the issue is to be solved but is not as a project in Gsoc? Thats all right will help me become familiar with SimpleCV
+2012-03-23T20:33:18  <kamal_> kscottz, I sent a draft project proposal to gsoc<__AT __>ingenuitas.com to get some feed back and suggestions, I am interested in improving machine learning librarary - especially adding unsupervised learning algorithms and PGM models ...
+2012-03-23T20:33:57  <kscottz> hold on.... ket me look
+2012-03-23T20:36:45  <kscottz> Kamal.... this looks good
+2012-03-23T20:36:48  <kscottz> There is one thing
+2012-03-23T20:37:16  <kscottz> So I need you to "wrap" your project into some sort of practical problem.
+2012-03-23T20:37:30  <kscottz> Like I want to use computer vision to do X
+2012-03-23T20:37:37  <kscottz> Where X is something that has real world value
+2012-03-23T20:37:48  <kamal_> ok
+2012-03-23T20:37:57  <kscottz> Like find a problem to solve
+2012-03-23T20:38:24  <kscottz> We really want the interns to write good code, but we also want to give them something to show to the world that is cool.
+2012-03-23T20:38:50  <kscottz> And let's just say, for example you wanted to use ML to sort fruit
+2012-03-23T20:38:57  <kscottz> just as something trivial
+2012-03-23T20:39:45  <kscottz> We want to see you go through the process of getting some data, writing a bunch of generic methods that would be useful for solving the problem, and then having a baseline against which to verify your results.
+2012-03-23T20:40:01  <kamal_> I implemented code to classify some object groups using simpleCV ML library and hosted in my google code
+2012-03-23T20:40:15  <kscottz> yeah I tool a quick look at it
+2012-03-23T20:40:31  <kscottz> I'll let you finish
+2012-03-23T20:41:02  <kamal_> I am interested in recognizing objects based on context information
+2012-03-23T20:41:38  <kamal_> would like to do experiments in that area using SimpleCV
+2012-03-23T20:42:31  <kscottz> yeah... my only warning kamal is that context based approaches are not really what we are looking for
+2012-03-23T20:43:09  <kscottz> I mean it is a very research geared tasks, you're more than welcome on it if you can give me a couple of real world scenarios that I could out and use that algorithm for tomorrow
+2012-03-23T20:44:53  <jayrambhia> kscottz, it's not 6-7 weeks. It's a lot more than that. But still how should it be divided ?
+2012-03-23T20:46:01  <kscottz> yeah it should be at least 12 I would think
+2012-03-23T20:46:15  <jayrambhia> yeah.
+2012-03-23T20:47:06  <kscottz> So figure there will be 2-3 weeks where you will be learning, maybe colleccting some data, maybe 4-5 coding, 2 weeks testing, and a few weeks documenting
+2012-03-23T20:47:27  <kscottz> I am not to strict on how you plan, as we all know these things slide around based on what you find.
+2012-03-23T20:47:42  <kscottz> It is not like we're just throwing up a website or a database
+2012-03-23T20:47:51  <kscottz> These are research-y type tasks
+2012-03-23T20:48:07  <kscottz> but plan to have a couple weeks of slack on both sides of the summer
+2012-03-23T20:48:10  <jayrambhia> yeah, but still there has to be some timeline.
+2012-03-23T20:48:23  <jayrambhia> yeah
+2012-03-23T20:49:32  <jayrambhia> kscottz, that you were talking about color clustering, what exactly is it ?
+2012-03-23T20:49:47  <jayrambhia> kscottz, that day you were talking about color clustering, what exactly is it ? typos
+2012-03-23T20:52:56  <jayrambhia> is letter and number recognition supported by simplecv ?
+2012-03-23T20:54:45  <kscottz> sorta
+2012-03-23T20:55:18  <kscottz> Uh I just take the colors, toss it in a vector, and do k-means
+2012-03-23T20:55:27  <kscottz> Text recognition works sometime
+2012-03-23T20:55:44  <khannan> kscottz How is the idea of Tracking an Object using a Kalman Filter, The Actual recognition is done using existing techniques and a Confidence parameter is calculated associated with the number/quality of Features extracted, a direct application of this would be fast object tracking in a noisy environment
+2012-03-23T20:56:22  *** Infinity_ has joined #simplecv
+2012-03-23T20:56:56  <kscottz> depends on what you mean by features
+2012-03-23T20:59:57  <khannan> The Features would ideally support any of the feature extraction methods or even simple segmentation methods, this would only be a framework for setting the confidence parameters, choosing the feature extraction technique etc.
+2012-03-23T21:00:53  <khannan> Like in a Simple application like RobboSoccer one would use simple color segmentation techniques to follow the ball
+2012-03-23T21:01:42  *** arduix has quit IRC
+2012-03-23T21:01:56  <khannan> Or this could be coupled with a TLD like feature extractor to make a closed loop system of tracking
+2012-03-23T21:02:24  *** arduix has joined #simplecv
+2012-03-23T21:04:07  <khannan> I hope I am not very ambiguous?
+2012-03-23T21:05:45  <kscottz> yeah that works
+2012-03-23T21:05:50  <kscottz> sorry I am looking at code
+2012-03-23T21:07:07  <khannan> Thats alright, I will hopefully have some working code to support this
+2012-03-23T21:09:17  <kamal_> yes - I do understand that context based recognition is an research intensive area(won't be suitable for gsoc project) - Object classification is the major computer vision task that is expected to be fulfilled by ML library - the performance will depend on the robustness of the features selected and classifier efficiency - I can download training data set for more general objects and process it through the "train - validate - test
+2012-03-23T21:11:04  <khannan> Also on an unrelated note isn't improving the web interface pertinent to the Ipython notebook Project?
+2012-03-23T21:11:04  <khannan> or do you mean updating the code for limitations of Notebook such as the lack of an STDIN?
+2012-03-23T21:11:43  <khannan> or do you mean updating the code for accomodating limitations of Notebook such as the lack of an STDIN? *typo
+2012-03-23T21:15:01  *** victsou_ has quit IRC
+2012-03-23T21:16:49  *** victsou_ has joined #simplecv
+2012-03-23T21:17:59  *** kamal_ has left #simplecv
+2012-03-23T21:20:14  *** witness123 has joined #simplecv
+2012-03-23T21:21:35  *** kscottz has quit IRC
+2012-03-23T21:22:11  *** elfwisden has quit IRC
+2012-03-23T21:24:07  *** jayrambhia has quit IRC
+2012-03-23T21:28:28  *** Shell has joined #simplecv
+2012-03-23T21:33:50  *** clemux has quit IRC
+2012-03-23T21:34:41  *** kain88 has quit IRC
+2012-03-23T21:35:54  *** clemux has joined #simplecv
+2012-03-23T21:44:28  *** jayrambhia has joined #simplecv
+2012-03-23T21:45:14  *** sivapvarma has quit IRC
+2012-03-23T21:45:33  *** jayrambhia has quit IRC
+2012-03-23T21:50:09  *** jitrc has quit IRC
+2012-03-23T21:54:35  *** khannan has left #simplecv
+2012-03-23T21:55:12  *** Gaboose has joined #simplecv
+2012-03-23T21:55:44  *** jitrc has joined #simplecv
+2012-03-23T22:00:59  *** hvq has quit IRC
+2012-03-23T22:10:55  *** ChrisCTX has joined #simplecv
+2012-03-23T22:11:03  <ChrisCTX> =o
+2012-03-23T22:11:13  <ChrisCTX> new bot on the channel I see
+2012-03-23T22:25:33  *** Gaboose has quit IRC
+2012-03-23T22:48:39  *** Infinity_ has quit IRC
+2012-03-23T23:35:22  *** ChrisCTX has quit IRC
+2012-03-23T23:41:48  *** Gaboose has joined #simplecv
+2012-03-24T00:12:10  *** jitrc has quit IRC
+2012-03-24T00:32:25  <Gaboose> has anyone here succeeded in opening a video stream in simplecv from a vlc player?
+2012-03-24T00:47:38  *** witness123 has quit IRC
+2012-03-24T00:52:42  *** arduix has quit IRC
+2012-03-24T01:05:45  *** arduix has joined #simplecv
+2012-03-24T01:23:30  *** arduix has quit IRC
+2012-03-24T01:28:31  *** arduix has joined #simplecv
+2012-03-24T01:30:51  *** Gaboose has quit IRC
+2012-03-24T01:42:37  *** ChrisCTX has joined #simplecv
+2012-03-24T02:27:03  *** frank4591 has quit IRC
+2012-03-24T03:18:41  *** ChrisCTX has left #simplecv
+2012-03-24T04:45:27  *** crescendo has quit IRC
+2012-03-24T04:48:08  *** krats1123 has quit IRC
+2012-03-24T04:48:34  *** arduix has quit IRC
+2012-03-24T05:00:42  *** arduix has joined #simplecv
+2012-03-24T05:13:56  *** crescendo has joined #simplecv
+2012-03-24T05:25:27  *** khannan has joined #simplecv
+2012-03-24T05:58:49  *** sivapvarma has joined #simplecv
+2012-03-24T06:12:38  *** arduix has quit IRC
+2012-03-24T06:25:37  *** arduix has joined #simplecv
+2012-03-24T06:25:51  *** sivapvarma has quit IRC
+2012-03-24T06:32:43  *** arduix has quit IRC
+2012-03-24T06:44:48  *** arduix has joined #simplecv
+2012-03-24T06:54:15  *** khannan has quit IRC
+2012-03-24T07:07:00  *** krats1123 has joined #simplecv
+2012-03-24T07:34:05  *** sivapvarma has joined #simplecv
+2012-03-24T07:37:19  *** sivapvarma has quit IRC
+2012-03-24T08:04:32  *** ChrisCTX has joined #simplecv
+2012-03-24T08:04:54  *** ChrisCTX has left #simplecv
+2012-03-24T08:38:54  *** jayrambhia has joined #simplecv
+2012-03-24T08:40:39  *** krats1123 has quit IRC
+2012-03-24T09:23:25  *** frank4591 has joined #simplecv
+2012-03-24T09:32:10  *** Anwaya has joined #simplecv
+2012-03-24T09:38:33  *** witness123 has joined #simplecv
+2012-03-24T10:03:35  *** frank4591 has quit IRC
+2012-03-24T10:46:52  *** Anwaya has quit IRC
+2012-03-24T10:49:43  *** khannan has joined #simplecv
+2012-03-24T10:50:45  *** khannan has quit IRC
+2012-03-24T11:06:10  *** Gaboose has joined #simplecv
+2012-03-24T12:26:46  *** khannan has joined #simplecv
+2012-03-24T12:56:49  *** arduix has quit IRC
+2012-03-24T12:59:36  *** Gaboose has quit IRC
+2012-03-24T13:03:11  *** khannan has quit IRC
+2012-03-24T13:03:59  *** arduix has joined #simplecv
+2012-03-24T14:43:25  *** rishipyth has joined #simplecv
+2012-03-24T14:46:49  *** Shell has quit IRC
+2012-03-24T14:46:54  <rishipyth> I was wondering why the codes in examples not included in a main function?
+2012-03-24T14:47:35  <jayrambhia> rishipyth, because they are examples
+2012-03-24T14:47:46  <rishipyth> This actually speeds up solutions
+2012-03-24T14:48:18  <jayrambhia> not exactly. The examples are there to let user know how to use simplecv
+2012-03-24T14:48:37  <jayrambhia> you just can't have everything directly.
+2012-03-24T14:48:39  <rishipyth> I am seen even seen a code run time of 10sec run at 0.5 sec.
+2012-03-24T14:48:58  <rishipyth> Oh..I guess you are correct.
+2012-03-24T14:49:06  <jayrambhia> It reduces user liberty and control.
+2012-03-24T14:49:44  <rishipyth> Truely bro, u r right. Thanx for that.
+2012-03-24T14:50:19  *** khannan has joined #simplecv
+2012-03-24T15:31:48  *** LeLouch16 has joined #simplecv
+2012-03-24T15:33:04  *** Gaboose has joined #simplecv
+2012-03-24T15:42:42  *** LeLouch16 has quit IRC
+2012-03-24T15:43:43  *** LeLouch16 has joined #simplecv
+2012-03-24T15:50:59  *** khannan has quit IRC
+2012-03-24T15:53:08  *** khannan has joined #simplecv
+2012-03-24T16:00:51  *** rishipyth has quit IRC
+2012-03-24T16:18:59  *** blink has joined #simplecv
+2012-03-24T16:27:31  *** Gaboose has quit IRC
+2012-03-24T16:27:53  *** blink has quit IRC
+2012-03-24T16:37:54  *** xamox has joined #simplecv
+2012-03-24T16:38:04  *** xamox has left #simplecv
+2012-03-24T16:59:28  *** feroze has joined #simplecv
+2012-03-24T18:12:03  *** Mboyanov has joined #simplecv
+2012-03-24T18:15:58  *** khannan has quit IRC
+2012-03-24T18:27:51  *** feroze is now known as feroze_
+2012-03-24T18:43:36  <Mboyanov> Hello. I'm interested in the machine learning part of simplecv. Is there a need to implement k-means clustering and/or some sort of neural networks? Also,i wanted to ask if this may is already implemented: does the naive bayes classifier store all the parameters or does it extract the decision boundaries?
+2012-03-24T18:44:39  *** Mboyanov has quit IRC
+2012-03-24T18:45:50  *** Marty has joined #simplecv
+2012-03-24T18:53:08  *** arduix has quit IRC
+2012-03-24T18:58:14  *** arduix has joined #simplecv
+2012-03-24T19:03:04  *** rishipyth has joined #simplecv
+2012-03-24T19:20:07  *** atneik has joined #simplecv
+2012-03-24T19:24:33  *** Gaboose has joined #simplecv
+2012-03-24T19:26:16  *** rishipyth has quit IRC
+2012-03-24T19:30:36  *** witness123 has quit IRC
+2012-03-24T19:39:54  *** atneik_ has joined #simplecv
+2012-03-24T19:40:55  *** atneik has quit IRC
+2012-03-24T19:43:06  *** rishipyth has joined #simplecv
+2012-03-24T19:44:50  *** arduix has quit IRC
+2012-03-24T19:45:30  *** arduix has joined #simplecv
+2012-03-24T20:03:35  *** khannan has joined #simplecv
+2012-03-24T20:07:12  *** arduix has quit IRC
+2012-03-24T20:08:23  *** arduix has joined #simplecv
+2012-03-24T20:30:41  <rishipyth> kscottz: r u there?
+2012-03-24T20:30:54  <jayrambhia> it's weekend!
+2012-03-24T20:31:20  <rishipyth> so its holiday?
+2012-03-24T20:31:38  <jayrambhia> maybe.
+2012-03-24T20:31:49  <rishipyth> hmmm
+2012-03-24T20:39:55  *** rishipyth has left #simplecv
+2012-03-24T20:43:22  *** atneik_ has quit IRC
+2012-03-24T20:56:35  *** victsou has joined #simplecv
+2012-03-24T21:21:32  *** witness123 has joined #simplecv
+2012-03-24T22:05:19  *** victsou_ has quit IRC
+2012-03-24T22:06:01  *** victsou_ has joined #simplecv
+2012-03-24T22:23:50  *** victsou has quit IRC
+2012-03-24T22:25:54  *** jayrambhia has quit IRC
+2012-03-24T23:14:08  *** ChrisCTX has joined #simplecv
+2012-03-24T23:26:32  *** jayrambhia has joined #simplecv
+2012-03-24T23:36:28  *** jayrambhia has quit IRC
+2012-03-24T23:46:22  *** makokal has joined #simplecv
+2012-03-25T00:20:22  *** ChrisCTX has quit IRC
+2012-03-25T00:31:39  *** witness123 has quit IRC
+2012-03-25T00:40:08  *** makokal_ has joined #simplecv
+2012-03-25T00:42:14  *** makokal has quit IRC
+2012-03-25T00:42:14  *** makokal_ is now known as makokal
+2012-03-25T01:00:01  *** Gaboose has quit IRC
+2012-03-25T01:53:00  *** akshaya4r has joined #simplecv
+2012-03-25T02:09:03  *** akshaya4r has quit IRC
+2012-03-25T02:37:46  *** makokal has quit IRC
+2012-03-25T03:45:15  *** Marty has quit IRC
+2012-03-25T03:54:11  *** khannan has quit IRC
+2012-03-25T04:24:43  *** ChrisCTX has joined #simplecv
+2012-03-25T04:40:13  *** victsou_ has quit IRC
+2012-03-25T04:47:52  *** witness123 has joined #simplecv
+2012-03-25T04:55:02  *** feroze_ is now known as feroze
+2012-03-25T04:56:09  *** witness123 has quit IRC
+2012-03-25T04:56:35  *** witness123 has joined #simplecv
+2012-03-25T05:11:38  *** feroze is now known as feroze_
+2012-03-25T05:19:30  *** Miggy has joined #simplecv
+2012-03-25T05:25:28  *** witness123 has quit IRC
+2012-03-25T05:41:35  *** atneik has joined #simplecv
+2012-03-25T05:56:57  *** witness123 has joined #simplecv
+2012-03-25T06:10:17  *** Miggy has quit IRC
+2012-03-25T06:20:49  *** khannan has joined #simplecv
+2012-03-25T06:33:49  *** khannan has quit IRC
+2012-03-25T06:35:01  *** atneik has quit IRC
+2012-03-25T07:01:42  *** feroze_ is now known as feroze
+2012-03-25T07:10:16  *** yash has joined #simplecv
+2012-03-25T07:11:05  *** yash has left #simplecv
+2012-03-25T07:44:21  *** ChrisCTX has quit IRC
+2012-03-25T08:07:39  *** khannan has joined #simplecv
+2012-03-25T08:14:06  *** feroze is now known as feroze_
+2012-03-25T08:44:13  *** arduix has quit IRC
+2012-03-25T08:49:04  *** khannan has quit IRC
+2012-03-25T08:56:46  *** arduix has joined #simplecv
+2012-03-25T08:59:34  *** atneik has joined #simplecv
+2012-03-25T09:16:38  *** witness123 has quit IRC
+2012-03-25T09:17:08  *** arduix has quit IRC
+2012-03-25T09:29:58  *** arduix has joined #simplecv
+2012-03-25T09:32:40  *** witness123 has joined #simplecv
+2012-03-25T10:03:02  *** atneik has quit IRC
+2012-03-25T11:03:42  *** atneik has joined #simplecv
+2012-03-25T11:12:34  *** Gaboose has joined #simplecv
+2012-03-25T11:31:32  *** atneik has left #simplecv
+2012-03-25T11:34:54  *** arduix has quit IRC
+2012-03-25T11:43:44  *** YuShin has joined #simplecv
+2012-03-25T12:11:03  *** rick92 has joined #simplecv
+2012-03-25T12:11:13  *** rick92 has left #simplecv
+2012-03-25T12:15:01  *** Gaboose has quit IRC
+2012-03-25T12:31:39  *** feroze_ is now known as feroze
+2012-03-25T12:44:48  *** atneik has joined #simplecv
+2012-03-25T12:54:12  *** khannan has joined #simplecv
+2012-03-25T13:11:21  *** Gaboose has joined #simplecv
+2012-03-25T13:24:31  *** frank4591 has joined #simplecv
+2012-03-25T13:38:58  *** blink_ has joined #simplecv
+2012-03-25T13:39:09  *** Marty has joined #simplecv
+2012-03-25T13:48:03  *** jayrambhia has joined #simplecv
+2012-03-25T13:50:08  *** arduix has joined #simplecv
+2012-03-25T13:54:43  *** Marty has quit IRC
+2012-03-25T14:02:51  *** witness123 has quit IRC
+2012-03-25T14:05:22  *** witness123 has joined #simplecv
+2012-03-25T14:22:27  *** makokal has joined #simplecv
+2012-03-25T14:30:58  *** jayrambhia has quit IRC
+2012-03-25T14:35:14  *** khannan has quit IRC
+2012-03-25T14:41:42  *** xamox has joined #simplecv
+2012-03-25T15:01:23  *** ChanServ sets mode: +o xamox
+2012-03-25T15:15:34  *** elyas_bhy__ has joined #simplecv
+2012-03-25T15:15:45  <elyas_bhy__> Hello
+2012-03-25T15:16:45  *** xamox has quit IRC
+2012-03-25T15:18:23  *** elyas_bhy__ is now known as elyas_bhy1
+2012-03-25T15:20:58  *** arduix has quit IRC
+2012-03-25T15:33:36  *** arduix has joined #simplecv
+2012-03-25T15:36:53  *** jitrc has joined #simplecv
+2012-03-25T15:43:48  *** witness123 has quit IRC
+2012-03-25T15:46:14  *** jitrc has quit IRC
+2012-03-25T15:46:34  *** YuShin has quit IRC
+2012-03-25T15:46:38  *** frank4591 has quit IRC
+2012-03-25T15:47:34  *** khannan has joined #simplecv
+2012-03-25T15:56:31  *** YuShin has joined #simplecv
+2012-03-25T16:04:25  *** feroze is now known as feroze_
+2012-03-25T16:23:42  *** feroze_ is now known as feroze
+2012-03-25T16:29:32  *** Gaboose_ has joined #simplecv
+2012-03-25T16:31:16  *** Gaboose has quit IRC
+2012-03-25T16:38:16  *** Gaboose_ is now known as Gaboose
+2012-03-25T16:39:33  *** feroze is now known as feroze_
+2012-03-25T16:40:39  *** feroze_ is now known as feroze
+2012-03-25T16:41:08  *** atneik has quit IRC
+2012-03-25T16:42:09  *** atneik has joined #simplecv
+2012-03-25T16:44:09  *** victsou_ has joined #simplecv
+2012-03-25T16:49:44  *** jayrambhia has joined #simplecv
+2012-03-25T16:52:07  *** rishipyth has joined #simplecv
+2012-03-25T17:04:46  *** harsh has joined #simplecv
+2012-03-25T17:09:59  <harsh> i would like to make an augmented reality app for mobile device
+2012-03-25T17:10:18  <harsh> On focusing the camera over some text written in specified language (which can be later advanced to detect language), the app will smartly replace the text in the real time video to the language specified using Google Translator.
+2012-03-25T17:11:14  <harsh> would that be a good idea?
+2012-03-25T17:11:49  <jayrambhia> it seems really good idea.
+2012-03-25T17:14:18  <harsh> thanx
+2012-03-25T17:14:38  <harsh> i have already started working on that
+2012-03-25T17:14:44  <jayrambhia> great
+2012-03-25T17:15:39  <harsh> do i need to be more specific in my idea while applying?
+2012-03-25T17:15:50  <jayrambhia> i guess
+2012-03-25T17:17:38  <harsh> ok
+2012-03-25T17:21:59  *** arduix has quit IRC
+2012-03-25T17:23:04  <harsh> i was also thinking of making an another augmented reality app for devices with good camera
+2012-03-25T17:23:42  <harsh> which can detect constellations, connect and highlight them in real time video to have better knowledge enriching experience.
+2012-03-25T17:25:34  *** LeLouch16 has joined #simplecv
+2012-03-25T17:26:02  <harsh> how would that be?
+2012-03-25T17:26:34  <jayrambhia> google sky is there
+2012-03-25T17:28:05  *** Nived has joined #simplecv
+2012-03-25T17:28:30  <harsh> no but if you have mobile phone.... you focus it on sky
+2012-03-25T17:29:09  <jayrambhia> and google sky gives me data about constellations and stuff
+2012-03-25T17:29:17  <harsh> and it will connect dots
+2012-03-25T17:29:23  <harsh> highlight it
+2012-03-25T17:29:42  *** Nived has left #simplecv
+2012-03-25T17:32:01  *** khannan has quit IRC
+2012-03-25T17:32:36  <harsh> it will not based on gps ..... it will be with camera :)
+2012-03-25T17:33:52  <jayrambhia> you do have a point
+2012-03-25T17:34:13  <jayrambhia> but then camera must have good resolution and zoom and stuff
+2012-03-25T17:35:08  *** arduix has joined #simplecv
+2012-03-25T17:35:30  <harsh> yeah that wat matters...... so maybe for iphone.... it would be an interesting app
+2012-03-25T17:35:52  <jayrambhia> yeah
+2012-03-25T17:35:55  <harsh> can i submit more than 1 idea
+2012-03-25T17:36:07  <jayrambhia> i don't know. I am not a mentor
+2012-03-25T17:36:22  <jayrambhia> read FAQs on GSoC website
+2012-03-25T17:36:43  <harsh> ok thnx :)
+2012-03-25T17:37:07  *** blink has joined #simplecv
+2012-03-25T17:43:39  *** arduix has quit IRC
+2012-03-25T17:53:46  *** arduix has joined #simplecv
+2012-03-25T17:55:10  *** gaurav__ has joined #simplecv
+2012-03-25T17:55:49  <gaurav__> hello all...im Gaurav, an undergraduate frm IIT Delhi, interested in GSoC12
+2012-03-25T18:00:01  *** gaurav__ has quit IRC
+2012-03-25T18:03:21  *** LeLouch16 has quit IRC
+2012-03-25T18:28:28  *** arduix has quit IRC
+2012-03-25T18:30:35  *** cybt__ has joined #simplecv
+2012-03-25T18:37:03  *** cybt__ has quit IRC
+2012-03-25T18:40:46  *** arduix has joined #simplecv
+2012-03-25T18:48:40  *** arduix has quit IRC
+2012-03-25T18:52:22  *** khannan has joined #simplecv
+2012-03-25T18:55:01  *** crescendo has quit IRC
+2012-03-25T18:55:39  *** crescendo_ has joined #simplecv
+2012-03-25T18:57:57  *** blink has quit IRC
+2012-03-25T19:01:29  *** arduix has joined #simplecv
+2012-03-25T19:07:04  *** arduix has quit IRC
+2012-03-25T19:11:38  <Gaboose> are there any of the mentors online?
+2012-03-25T19:19:30  *** arduix has joined #simplecv
+2012-03-25T19:22:58  *** victsou has joined #simplecv
+2012-03-25T19:33:49  *** witness123 has joined #simplecv
+2012-03-25T19:38:30  *** elyas_bhy1 has quit IRC
+2012-03-25T19:44:11  *** rishipyth has quit IRC
+2012-03-25T19:49:30  *** witness123 has quit IRC
+2012-03-25T19:49:48  *** ChrisCTX has joined #simplecv
+2012-03-25T20:00:59  *** arduix has quit IRC
+2012-03-25T20:05:25  *** jitrc has joined #simplecv
+2012-03-25T20:08:17  *** arduix has joined #simplecv
+2012-03-25T20:11:44  *** witness123 has joined #simplecv
+2012-03-25T20:12:04  *** witness_ has joined #simplecv

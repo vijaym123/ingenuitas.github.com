@@ -6,5 +6,5 @@
 /atom.xml
 /apply.html
 
-/irc/2012/03/25/irc-log-posted.html
+/proposals/2012/03/27/proposal-xamox-example-proposal.html
 /lessons/2012/03/24/new-soc-blog.html
