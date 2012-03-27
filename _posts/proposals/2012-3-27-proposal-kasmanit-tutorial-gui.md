@@ -60,7 +60,19 @@ to the tools.
 
 About Me:
 
+*Programming and coding skills:
+    **Python : Good knowledge
+    **C++    : Notions
+    **Web    : Long experience in PHP, move to Django since one years
+    **LaTeX  : Good knowledge
+    **DOT    : Notions
+    
+*Cursus
+
 I am currently making a Bachelor in the Brussels University, Belgium in Computer Sciences. I am completly new in the world of Computer Vision but I am very motivate as from all I have seen the world of Computer Vision is really vast and interesting.
 
-I have a good knowledge of Python (2 and 3) as it is the basis language of this study. I can understand C++ code, and I always like to discover new language, new prommaming tools, new branch of them. It is in this kind of démarche that I find SimpleCV.
+*Former Job
+
+I have never worked on a big project as we consider it there. But it's an occasion that I wan't to take. I will do my best to fullfill the requirement.
+I have in developpement of website and small apps (such as a plotter of mathematical function calculating the integrals of them) get familiar to Version Control System (git).
 
